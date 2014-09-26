@@ -1,0 +1,12 @@
+Catalogos:
+	CveCatalogo
+	Nombre
+
+CatalogosDetalles:
+	CveCatalogo
+	NumConsecutivo
+	Descripcion1
+	Descripcion2
+	Monto1
+	Monto2
+	

@@ -1,0 +1,104 @@
+Sublime:
+	ctrl + p:Buscar un archivo
+	Plugins:Alignment
+Formatear código rápido presionando Ctrl + Alt + a.
+		sublimelinter
+		Alignment:
+			Formatear código rápido presionando Ctrl + Alt + a.
+Git:
+	Instalar git apt-get install git
+	git --version  #para ver la version instalada
+	git config --global user.name "Raul Torres"  #Nombre del usuario
+	git config --global user.email "raultr@gmail.com"  #correo de registro
+	ssh-keygen #Genera una clave ssh 
+    cd .ssh/ #Por defecto nos pone la llave en esta carpeta
+    cat id_rsa.pub  #Para ver la llave generada
+    Se copia la llave en github en SSH KEYS
+    ssh-add  #Agregar la llave y me pide mi contraseña
+    ssh -T git@github.com #Nos conecta con github y le decimos que si nos queremos conectar
+    En github copiamos la ruta ejemplo:https://github.com/raultr/jquerytools.git
+    git init #inicializamos git
+    git remote add origin https://github.com/raultr/jquerytools.git # Agregamos la ruta remota
+    git pull #Traemos los cambios
+    git chekout master # Nos ponemos en la rama indicada en este caso master
+    git status # nos muestra los cambios que hemos hecho
+    git add index2.html # Agregamos el archivo a nuestro repositorio (git add . #Todos)
+    git commit -m "Varios index que acabo de agregar" #Acemos commit de los cambios
+    git push origin master # Empujamos los cambio hacia el servidor no pedira la cuenta github
+
+Entorno Virtual (virtualenv):
+	sudo apt-get install python-virtualenv # Instalar el entorno virtual
+ 	virtualenv venv # Crea el entorno virtual dentro de la carpeta venv
+ 	
+ 	Inicializar el entorno virtual:
+ 		source venv/bin/activate
+ 	Instalar paquetes:
+ 		pip install django
+ 		pip install pillow
+ 	Ver paquetes instalados:
+ 		pip freeze
+
+Django:
+	Crear proyecto:
+		django-admin.py startproject nombre_proyecto
+		chmod +x manage.py # para dar permisos de ejecucion y no utilizar siempre python manage.py 
+
+	Inicializar el servidor:
+	 ./manage.py runserver
+Usuario Admin: 
+  raultr-hp  123
+
+ Crear modulos en django:
+ 	./manage.py startapp nombre_modulo
+
+Crear el modelo en la base de datos:
+	./manage.py syncdb
+
+Cambiar un modelo:
+
+	primero se crea una migracion:
+		./manage.py schemamigration --initial artists
+	se migra falsa
+		./manage.py migrate artists --fake
+	se migra con los nuevos datos
+		./manage.py schemamigration --auto artists
+
+
+ Parar el servidor
+	 ps aux | grep python
+	 kill -9 id_proceso
+
+Crear datos de prueba
+    pip install django-mockups
+	./manage.py mockups artists.Artist:10000
+
+Extension para consola de python
+	 pip install django-extensions
+	 Importa todos los modelos para usarlos en la consola
+	 	./manage.py shell_plus
+	 Ejemplo de uso (elimina los artistas con id mayor a 2):
+	 	Artist.objects.filter(id__gt=2).delete()
+
+Instalar grappelli:
+	pip install django-grappelli
+
+Para debuguear:
+	pip install ipdb
+    Esta instruccion para el codigo en ese punto y los muestra en la consola
+    donde esta corriendo el servicdor:
+     	import ipdb; ipdb.set_trace()
+
+Mostrar debugger en el servidor:
+    pip install Werkzeug
+    ./manage.py runserver_plus
+    dump() Muestra los datos que hay en esa parte
+
+Pruebas unitarias:
+	Se hacen el archivo test.py y desde la consola se ejecuta:
+	     ./manage.py test artists
+
+Para usar Api Rest:
+	pip install djangorestframework
+
+Para filtrar con Api Rest:
+	pip install django-filter
