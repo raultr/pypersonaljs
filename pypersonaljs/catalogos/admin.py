@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Catalogo       #. Es la carpeta donde nos encontramos
+
+admin.site.register(Catalogo)

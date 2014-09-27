@@ -54,7 +54,14 @@ Usuario Admin:
 Crear el modelo en la base de datos:
 	./manage.py syncdb
 
-Cambiar un modelo:
+Migrar datos de un modelo:"Solo para Django 1.6"
+	pip install south
+	Agregar la libreria south al proyecto	
+	./manage.py syncdb
+	./manage.py convert_to_south nombre_modulo
+    ./manage.py schemamigration nombre_modulo --auto  #Opciones 2,1,2,1
+    ./manage.py migrate nombre_modulo
+
 
 	primero se crea una migracion:
 		./manage.py schemamigration --initial artists
@@ -63,6 +70,13 @@ Cambiar un modelo:
 	se migra con los nuevos datos
 		./manage.py schemamigration --auto artists
 
+Migrar datos de un modelo:"Solo para Django 1.7"
+	./manage.py syncdb # el usuario y contraseña que pide son los que se usaran en el administrador de django
+	./manage.py makemigrations nombre_modulo #Para crear los archivos de migracion
+	./manage.py migrations #Aplica los cambios en la base de datos
+
+Registrar los modelos en el Administrador:
+	Se registran en el admin.py de cada modelo
 
  Parar el servidor
 	 ps aux | grep python
