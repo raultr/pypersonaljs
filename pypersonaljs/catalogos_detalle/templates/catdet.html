@@ -6,9 +6,13 @@
 </head>
 <body>
 	<section>
-		<p>
-			Catalogos: {{catalogo.nombre}}
-		</p>
+		
+		<ul>
+  		{% for i in datos %}
+    		<li>{{ i.catalogo }}</li>
+    		<li>{{ i.descripcion1 }}</li>
+  		{% endfor %} 
+		</ul>
 	</section>
 </body>
 </html>

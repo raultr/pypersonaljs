@@ -10,4 +10,4 @@ class CatalogoDetalle(models.Model):
 	catalogos = models.ForeignKey(Catalogo,default=Catalogo.DEFAULT_PK)
 
 	def __unicode__(self):
-		return self.descripcion1
+		return str(self.id)
