@@ -9,5 +9,8 @@ class CatalogoDetalle(models.Model):
 	monto2 = models.DecimalField(max_digits=18,decimal_places=2,default=Decimal('0.00'))
 	catalogos = models.ForeignKey(Catalogo,default=Catalogo.DEFAULT_PK)
 
+	def codigo(self): # Campo calculado en el administrador
+		return str(self.catalogos.id) + '-' + str(self.id) 
+
 	def __unicode__(self):
 		return str(self.id)

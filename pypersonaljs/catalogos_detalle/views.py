@@ -1,7 +1,7 @@
 import json
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
-
+from django.core import serializers
 from .models import CatalogoDetalle
 from catalogos.models import Catalogo
 
@@ -9,11 +9,16 @@ def catalogo_detalle_view(request,catalogod):
 	catalogo = get_object_or_404(Catalogo, nombre=catalogod)
 	catalogo_detalle= get_list_or_404(CatalogoDetalle, catalogos=catalogo.id)
 	print catalogo_detalle
+	data = serializers.serialize("json", catalogo_detalle,fields="id")
+	print "***detalle***"
+	print data
+	print "*****"
 
 	if catalogo_detalle:
 		datos = []
 		for det in catalogo_detalle:
 			cat = det.catalogos
+			
 			dato = {
 			    'catalogo': cat.nombre,
 				'id': det.id,
@@ -23,12 +28,7 @@ def catalogo_detalle_view(request,catalogod):
 			datos.append(dato)
 	#print datos
 	datos_json = json.dumps(datos)
-	#print datos_json
-	for a in datos:
-		print a
-		print "--"
-
-	return render(request,'catdet.html',{'datos':datos})
+	return HttpResponse(datos_json, content_type='application/json')
 #	return HttpResponse(datos_json, content_type='application/json')
 #	return HttpResponse("hola mundo")
 

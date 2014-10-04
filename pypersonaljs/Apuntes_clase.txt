@@ -74,9 +74,28 @@ Migrar datos de un modelo:"Solo para Django 1.7"
 	./manage.py syncdb # el usuario y contraseña que pide son los que se usaran en el administrador de django
 	./manage.py makemigrations nombre_modulo #Para crear los archivos de migracion
 	./manage.py migrations #Aplica los cambios en la base de datos
+	#Para ver la sentencia sql de la migracion:
+		./manage.py sqlmigrate modelo numero_migracion
 
 Registrar los modelos en el Administrador:
 	Se registran en el admin.py de cada modelo
+	Cambiar password del admn:
+		 ./manage.py changepassword nombre_usuario
+	Crear password adm:
+		./manage.py createsuperuser
+
+Formulario de usuario:	
+	Crear app: 
+		./manage.py startapp userprofiles
+	El codigo esta en forms.py
+	Se crea la vista y la url
+	Se crea el token el formulario {% csrf_token %}
+
+Ruta para el manejo de imagenes:
+	Se establece en settings.py del proyecto y se agrega:
+		MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
+		MEDIA_URL = '/media/'
+
 
  Parar el servidor
 	 ps aux | grep python
@@ -84,6 +103,7 @@ Registrar los modelos en el Administrador:
 
 Crear datos de prueba
     pip install django-mockups
+    regitrarla en setting: mockups
 	./manage.py mockups artists.Artist:10000
 
 Extension para consola de python
