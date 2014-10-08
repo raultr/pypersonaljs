@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import CatalogoDetalle
 
 class CatalogoDetalleAdmin(admin.ModelAdmin):
-	list_display =('id','catalogos','descripcion1','descripcion2','monto1','monto2','codigo','es_pais',)
+	list_display =('id','descripcion1','catalogos','descripcion2','monto1','monto2','codigo','es_pais',)
 	list_filter =('catalogos',)
 	search_fields = ('descripcion1','catalogos__nombre') # Campos por los que se puede buscar, si son campos foraneos se usa campo__nomcampoforaneo
 	list_editable = ('catalogos','descripcion1',) # Hace el campo editable, (no debe ser el primer campo del list_display)

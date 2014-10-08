@@ -1,3 +1,8 @@
+Python:
+		
+		[t.nombre() for t in tracks] # Obtenemos toda la lista
+
+
 Sublime:
 	ctrl + p:Buscar un archivo
 	Plugins:Alignment
@@ -73,7 +78,7 @@ Migrar datos de un modelo:"Solo para Django 1.6"
 Migrar datos de un modelo:"Solo para Django 1.7"
 	./manage.py syncdb # el usuario y contraseña que pide son los que se usaran en el administrador de django
 	./manage.py makemigrations nombre_modulo #Para crear los archivos de migracion
-	./manage.py migrations #Aplica los cambios en la base de datos
+	./manage.py migrate #Aplica los cambios en la base de datos
 	#Para ver la sentencia sql de la migracion:
 		./manage.py sqlmigrate modelo numero_migracion
 
@@ -83,6 +88,10 @@ Registrar los modelos en el Administrador:
 		 ./manage.py changepassword nombre_usuario
 	Crear password adm:
 		./manage.py createsuperuser
+
+ClassBasedView:
+	OJO: Son muy buenas para no repetir código, se hicieron para eso, ten clara su función antes de usarlas
+
 
 Formulario de usuario:	
 	Crear app: 
@@ -113,19 +122,33 @@ Extension para consola de python
 	 Ejemplo de uso (elimina los artistas con id mayor a 2):
 	 	Artist.objects.filter(id__gt=2).delete()
 
-Instalar grappelli:
+Interfaz adicional para el adminstrador:
+ grappelli:
 	pip install django-grappelli
+	se agrega en las aplicaciones: grappelli antes del admistrador
 
 Para debuguear:
+    Basico: 1/0 si da error esta entrando al codigo
 	pip install ipdb
     Esta instruccion para el codigo en ese punto y los muestra en la consola
     donde esta corriendo el servicdor:
      	import ipdb; ipdb.set_trace()
+     	ctrl + D  Continua la ejecucion
 
 Mostrar debugger en el servidor:
+   
     pip install Werkzeug
     ./manage.py runserver_plus
+    Se pueden abrir consolas en el mismo navegador
     dump() Muestra los datos que hay en esa parte
+
+Procesadores de contexto:
+	Se usan en las plantillas por ejemplo para hace un menu.
+
+Middleware:
+	Son de comportamiento global pueden cambiar el comportamiento de la aplicacion
+	Sirven para capturar por ejemplo de que pais nos esta visitando el usuario.
+	Saber el navegador que usan
 
 Pruebas unitarias:
 	Se hacen el archivo test.py y desde la consola se ejecuta:
