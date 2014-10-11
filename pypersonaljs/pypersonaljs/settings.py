@@ -24,7 +24,13 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+REST_FRAMEWORK = { 
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
+                }
+
+
+# Cuando se quita el debug se debe de poner esta linea
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,10 +45,12 @@ INSTALLED_APPS = (
     'django_extensions',
     'easy_thumbnails',
     'mockups',
+    'rest_framework',
     'catalogos',
     'catalogos_detalle',
     'userprofiles',
     'prueba',
+    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,6 +96,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Busca los archivos estaticos el en el sistema de archivos y en el directorio de las aplicaciones
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
+
+# Falta configurar el cache para las imagenes esta en el video de archivos estaticos
 
 MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
 MEDIA_URL = '/media/'

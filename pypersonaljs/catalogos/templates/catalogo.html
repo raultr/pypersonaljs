@@ -1,2 +1,8 @@
+{% load static from staticfiles %}
+
 {{catalogo.nombre}}
 {{catalogo.id}}
+
+<img src="{{STATIC_URL}}mente.jpg">
+
+<img src="{% static "mente.jpg" %}">

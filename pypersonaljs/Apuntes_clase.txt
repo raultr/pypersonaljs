@@ -156,6 +156,31 @@ Pruebas unitarias:
 
 Para usar Api Rest:
 	pip install djangorestframework
+	Estas son opcionales:
+		pip install markdown       # Para documentar
+		Para filtrar con Api Rest:
+			pip install django-filter  # Para hacer filtros dentro del api
+			En settings.py agregar:
+				REST_FRAMEWORK = { 
+  			  'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',
+  			 En la clase de la vista del api:
+  			 	filter_fields = ('campo1','campo2')
+  			 Y se filtra desde la url:
+				?descripcion1=Mujer
 
-Para filtrar con Api Rest:
-	pip install django-filter
+Para mostrar imagenes en el Administrador:
+	Definir una funcion que retorne la url de la imagen:
+		def imagen_catalogo(self,obj):
+		return '<img src="/media/%s">' % obj.icono
+	Permitir usar el html devuelto
+		imagen_catalogo.allow_tags = True
+	Redimencionar imagenes:
+		pip install sorl_thumbnail
+		pip install -I pillow
+		en django 1.7 tuve que instalar pip install sorl-thumbnail==11.12.1.b por incompatibilidad con el otro
+		registrar en settings sorl.thumbnail
+		importar en el administrador:
+			from sorl.thumbnail import get_thumnbail
+		Para usarlo como un retorno de html:
+			return '<img src="/media/%s">' %  unicode(get_thumbnail( obj.icono,'50x50'))
+

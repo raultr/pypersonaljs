@@ -12,5 +12,13 @@ class CatalogoDetalle(models.Model):
 	def codigo(self): # Campo calculado en el administrador
 		return str(self.catalogos.id) + '-' + str(self.id) 
 
+	def es_pais(self):
+		return self.catalogos.nombre == "Pais"
+
+#       Investigar para que sirve @staticmethod
+#	@staticmethod
+#	def autocomplete_Search_fields():
+#		return ("descripcion1__icointains","descripcion2__icontains")
+		
 	def __unicode__(self):
 		return str(self.id)
