@@ -10,3 +10,30 @@ CatalogosDetalles:
 	Monto1
 	Monto2
 	
+Mejores practicas de api rest:
+
+    GET /tickets- Devuelve una lista de tickets
+    GET /tickets/12- Devuelve un ticket específico
+    POST /tickets- Crea un nuevo ticket
+    PUT /tickets/12- Actualiza el ticket #12
+    PATCH /tickets/12- Actualiza parcialmente el ticket #12
+    DELETE /tickets/12- Elimina el ticket #12
+
+
+GET  /Catalogos - Lista de catalogos
+GET  /Catalogos/Pais Devuelve un catalogo en especifico
+POST /Catalogos Crea un nuevo catalogo
+
+GET  /Catalogos/Pais/Detalles Devuelve una lista de paises
+POST /Catalogos/Pais/Detalles Crea un nuevo detalle del pais
+
+
+Ejemplo de filtrado:
+	GET /tickets?state=open	
+
+Ejemplo de ordenacion:
+	    GET /tickets?sort=-priority – Devuelve una lista de 		tickets en orden de prioridad descendiente
+	    GET /tickets?sort=-priority,created_at - Devuelve una 			lista de tickets en orden de prioridad 			descendiente. Con una prioridad específica, los 		tickets más viejos son ordenados primero.
+
+Ejemplo de como limitar campos:
+	GET /tickets?		fields=id,subject,customer_name,updated_at&state=open&sort=-updated_

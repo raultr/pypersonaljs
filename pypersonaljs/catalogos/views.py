@@ -24,6 +24,8 @@ def catalogo_view(request,catalogo):
 #	return render(request,'index.html',{'catalogo': catalogo})
 #	return HttpResponse('Ok')
 
+def prueba_mia(request):
+	return render(request,'index2.html')
 
 
 class CatalogoView(DetailView):

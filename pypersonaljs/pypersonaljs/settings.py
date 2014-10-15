@@ -25,9 +25,20 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 REST_FRAMEWORK = { 
-    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
-                }
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.DjangoModelPermissions',),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        #'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',),
+    }
 
+
+REST_FRAMEWORK = {
+   
+}
+ 
 
 # Cuando se quita el debug se debe de poner esta linea
 ALLOWED_HOSTS = ['*']
@@ -51,6 +62,7 @@ INSTALLED_APPS = (
     'userprofiles',
     'prueba',
     'sorl.thumbnail',
+    'apprest',
 )
 
 MIDDLEWARE_CLASSES = (
